@@ -4,25 +4,29 @@
     ViewData["Title"] = "Detalles del Empleado";
 }
 
-<h2>Detalles del Empleado</h2>
+<h2 class="text-center">Detalles del Empleado</h2>
 
-<table class="table table-bordered">
-    <tr>
-        <th>Nombre</th>
-        <td>@Model.Empleado.Nombre</td>
-    </tr>
-    <tr>
-        <th>Correo</th>
-        <td>@Model.Empleado.Correo</td>
-    </tr>
-    <tr>
-        <th>Fecha de Ingreso</th>
-        <td>@Model.Empleado.FechaIngreso.ToShortDateString()</td>
-    </tr>
-    <tr>
-        <th>Departamento</th>
-        <td>@Model.Empleado.Departamento</td>
-    </tr>
-</table>
+<div class="d-flex justify-content-center">
+    <table class="table table-bordered w-50">
+        <tr>
+            <th>Nombre</th>
+            <td>@Model.Empleado.Nombre</td>
+        </tr>
+        <tr>
+            <th>Correo</th>
+            <td>@Model.Empleado.Correo</td>
+        </tr>
+        <tr>
+            <th>Fecha de Ingreso</th>
+            <td>@Model.Empleado.FechaIngreso.ToShortDateString()</td>
+        </tr>
+        <tr>
+            <th>Departamento</th>
+            <td>@Model.Empleado.Departamento</td>
+        </tr>
+    </table>
+</div>
 
-<a asp-page="Index" class="btn btn-primary">Volver</a>
+<div class="d-flex justify-content-center">
+    <a asp-page="Index" class="btn btn-primary">Volver</a>
+</div>

@@ -27,4 +27,5 @@ app.MapGet("/", async context =>
 {
     context.Response.Redirect("/Empleados/Index");
 });
+app.UseStatusCodePagesWithReExecute("/NotFound");
 app.Run();
