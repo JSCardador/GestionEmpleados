@@ -4,26 +4,28 @@
     ViewData["Title"] = "Editar Empleado";
 }
 
-<h2>Editar Empleado</h2>
+<h2 class="text-center">Editar Empleado</h2>
 
-<form method="post" class="form-group">
-    <div>
-        <label for="Nombre">Nombre</label>
-        <input type="text" id="Nombre" name="Empleado.Nombre" value="@Model.Empleado.Nombre" class="form-control" required />
-    </div>
-    <div>
-        <label for="Correo">Correo</label>
-        <input type="email" id="Correo" name="Empleado.Correo" value="@Model.Empleado.Correo" class="form-control" required />
-    </div>
-    <div>
-        <label for="FechaIngreso">Fecha de Ingreso</label>
-        <input type="date" id="FechaIngreso" name="Empleado.FechaIngreso" value="@Model.Empleado.FechaIngreso.ToString("yyyy-MM-dd")" class="form-control" required />
-    </div>
-    <div>
-        <label for="Departamento">Departamento</label>
-        <input type="text" id="Departamento" name="Empleado.Departamento" value="@Model.Empleado.Departamento" class="form-control" required />
-    </div>
+<div class="d-flex justify-content-center " style="height: 80vh;">
+    <form method="post" class="form-group w-50" asp-route-id="@Model.Empleado.Id">
+        <div>
+            <label for="Nombre">Nombre</label>
+            <input type="text" id="Nombre" name="Empleado.Nombre" value="@Model.Empleado.Nombre" class="form-control" required />
+        </div>
+        <div>
+            <label for="Correo">Correo</label>
+            <input type="email" id="Correo" name="Empleado.Correo" value="@Model.Empleado.Correo" class="form-control" required />
+        </div>
+        <div>
+            <label for="FechaIngreso">Fecha de Ingreso</label>
+            <input type="date" id="FechaIngreso" name="Empleado.FechaIngreso" value="@Model.Empleado.FechaIngreso.ToString("yyyy-MM-dd")" class="form-control" required />
+        </div>
+        <div>
+            <label for="Departamento">Departamento</label>
+            <input type="text" id="Departamento" name="Empleado.Departamento" value="@Model.Empleado.Departamento" class="form-control" required />
+        </div>
 
-    <button type="submit" class="btn btn-success mt-3">Guardar</button>
-    <a asp-page="Index" class="btn btn-secondary mt-3">Cancelar</a>
-</form>
+        <button type="submit" class="btn btn-success mt-3">Guardar</button>
+        <a asp-page="Index" class="btn btn-secondary mt-3">Cancelar</a>
+    </form>
+</div>

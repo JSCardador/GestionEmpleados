@@ -2,6 +2,7 @@ using GestionEmpleados.Data;
 using GestionEmpleados.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace GestionEmpleados.Pages.Empleados
 {
@@ -10,7 +11,8 @@ namespace GestionEmpleados.Pages.Empleados
         private readonly ApplicationDbContext _context;
 
         [BindProperty]
-        public Empleado Empleado { get; set; } = new();
+        public Empleado Empleado { get; set; }
+        private int currentEmpleadoId;
 
         public EditModel(ApplicationDbContext context)
         {
@@ -21,22 +23,35 @@ namespace GestionEmpleados.Pages.Empleados
         {
             Empleado = await _context.Empleados.FindAsync(id);
 
+            currentEmpleadoId = id;
+
             if (Empleado == null)
             {
-                return NotFound();
+                return NotFound("Empleado no encontrado");
             }
+
+            Console.WriteLine("-----> GET " + Empleado.Nombre + " " + Empleado.Id);
 
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int id)
         {
             if (!ModelState.IsValid)
             {
                 return Page();
             }
 
-            _context.Empleados.Update(Empleado);
+            var empleadoExistente = await _context.Empleados.FindAsync(id);
+
+            if (empleadoExistente == null)
+            {
+                return NotFound("Empleado no encontrado");
+            }
+
+            // Actualiza los valores
+            Empleado.Id = id;   
+            _context.Entry(empleadoExistente).CurrentValues.SetValues(Empleado);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("Index");
