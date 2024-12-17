@@ -1,0 +1,37 @@
+@page
+@model GestionEmpleados.Pages.Empleados.IndexModel
+@{
+    ViewData["Title"] = "Lista de Empleados";
+}
+
+<h2>Lista de Empleados</h2>
+
+<a class="btn btn-primary" asp-page="Create">Crear Nuevo</a>
+
+<table class="table table-striped mt-3">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Fecha Ingreso</th>
+            <th>Departamento</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var empleado in Model.Empleados)
+        {
+            <tr>
+                <td>@empleado.Nombre</td>
+                <td>@empleado.Correo</td>
+                <td>@empleado.FechaIngreso.ToShortDateString()</td>
+                <td>@empleado.Departamento</td>
+                <td>
+                    <a class="btn btn-info" asp-page="Details" asp-route-id="@empleado.Id">Ver</a>
+                    <a class="btn btn-warning" asp-page="Edit" asp-route-id="@empleado.Id">Editar</a>
+                    <a class="btn btn-danger" asp-page="Delete" asp-route-id="@empleado.Id">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

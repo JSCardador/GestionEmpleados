@@ -1,0 +1,29 @@
+@page
+@model GestionEmpleados.Pages.Empleados.CreateModel
+@{
+    ViewData["Title"] = "Crear Empleado";
+}
+
+<h2>Crear Nuevo Empleado</h2>
+
+<form method="post" class="form-group">
+    <div>
+        <label for="Nombre">Nombre</label>
+        <input type="text" id="Nombre" name="Empleado.Nombre" class="form-control" required />
+    </div>
+    <div>
+        <label for="Correo">Correo</label>
+        <input type="email" id="Correo" name="Empleado.Correo" class="form-control" required />
+    </div>
+    <div>
+        <label for="FechaIngreso">Fecha de Ingreso</label>
+        <input type="date" id="FechaIngreso" name="Empleado.FechaIngreso" class="form-control" required />
+    </div>
+    <div>
+        <label for="Departamento">Departamento</label>
+        <input type="text" id="Departamento" name="Empleado.Departamento" class="form-control" required />
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-3">Crear</button>
+    <a asp-page="Index" class="btn btn-secondary mt-3">Cancelar</a>
+</form>

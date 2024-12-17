@@ -1,0 +1,33 @@
+@page
+@model GestionEmpleados.Pages.Empleados.DeleteModel
+@{
+    ViewData["Title"] = "Eliminar Empleado";
+}
+
+<h2>Eliminar Empleado</h2>
+
+<h4>¿Estás seguro de que deseas eliminar este empleado?</h4>
+
+<table class="table table-bordered">
+    <tr>
+        <th>Nombre</th>
+        <td>@Model.Empleado.Nombre</td>
+    </tr>
+    <tr>
+        <th>Correo</th>
+        <td>@Model.Empleado.Correo</td>
+    </tr>
+    <tr>
+        <th>Fecha de Ingreso</th>
+        <td>@Model.Empleado.FechaIngreso.ToShortDateString()</td>
+    </tr>
+    <tr>
+        <th>Departamento</th>
+        <td>@Model.Empleado.Departamento</td>
+    </tr>
+</table>
+
+<form method="post">
+    <button type="submit" class="btn btn-danger">Eliminar</button>
+    <a asp-page="Index" class="btn btn-secondary">Cancelar</a>
+</form>
